@@ -2,9 +2,9 @@ package com.denizci155.demo.rest;
 
 import com.denizci155.demo.entity.Student;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class StudentRestController {
 
         theStudents.add(new Student("Deniz", "Inec"));
         theStudents.add(new Student("Mario", "Pipe"));
-        theStudents.add(new Student("Luigi", "Piep"));
+        theStudents.add(new Student("Luigi", "Pipe"));
 
 
     }
@@ -41,6 +41,24 @@ public class StudentRestController {
     }
 
 
+    @GetMapping("/students/{studentId}")
+    public Student getStudent(@PathVariable int studentId){
+
+        // just index into the list ... keep it simple for now
+
+
+        // check the studentId again list size
+
+        if ( (studentId >= theStudents.size() || (studentId < 0))){
+
+            throw new StudentNotFoundException("Student id not found - " + studentId);
+
+        }
+
+        return theStudents.get(studentId);
+
+
+    }
 
 
 

@@ -1,6 +1,5 @@
 package com.denizci155.cruddemo.rest;
 
-import com.denizci155.cruddemo.dao.EmployeeDAO;
 import com.denizci155.cruddemo.entity.Employee;
 import com.denizci155.cruddemo.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;

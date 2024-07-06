@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Student Registration From</title>
 </head>
+
+
 <body>
 
 
@@ -29,10 +31,29 @@
 
         />
 
-
     </select>
 
-  <input type="submit" value="submit" />
+    <br><br>
+
+    Language:
+
+    <input style="margin: 8px" type="radio" th:field="*{favoriteLanguage}"
+           th:each="tempLang: ${languages}"
+           th:value="${tempLang}"
+           th:text="${tempLang}" />
+
+    <br><br>
+
+    Operating Systems:
+
+    <input type="checkbox" th:field="*{favoriteOS}"
+           th:each="tempSystem: ${systems}"
+           th:value="${tempSystem}"
+           th:text="${tempSystem}" />
+
+    <br><br>
+
+    <input type="submit" value="submit" />
 
 
 

@@ -14,9 +14,15 @@ import java.util.List;
 @Controller
 public class StudentController {
 
+    @Value("${languages}")
+
+    private List<String> languages;
 
     @Value("${countries}")
     private List<String> countries;
+
+    @Value("${systems}")
+    private List<String> systems;
 
 
     @GetMapping("/showStudentForm")
@@ -34,6 +40,9 @@ public class StudentController {
 
         theModel.addAttribute("countries",countries);
 
+        theModel.addAttribute("languages",languages);
+
+        theModel.addAttribute("systems",systems);
 
         return "student-form";
     }

@@ -44,7 +44,7 @@ public class CustomerController {
             BindingResult theBindingResult){
 
         // debugging
-        
+
         System.out.println("Last name: |" + theCustomer.getLastName()+ "|");
 
         System.out.println("Binding results: " + theBindingResult.toString());

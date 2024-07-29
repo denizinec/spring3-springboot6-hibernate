@@ -1,7 +1,7 @@
-package com.denizci155.springboot.cruddemo.service;
+package com.denizci155.springboot.thymeleafdemo.service;
 
-import com.denizci155.springboot.cruddemo.dao.EmployeeRepository;
-import com.denizci155.springboot.cruddemo.entity.Employee;
+import com.denizci155.springboot.thymeleafdemo.dao.EmployeeRepository;
+import com.denizci155.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

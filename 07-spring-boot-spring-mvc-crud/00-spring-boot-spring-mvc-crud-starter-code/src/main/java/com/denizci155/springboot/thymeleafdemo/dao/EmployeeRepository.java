@@ -1,6 +1,5 @@
-package com.denizci155.springboot.cruddemo.dao;
-
-import com.denizci155.springboot.cruddemo.entity.Employee;
+package com.denizci155.springboot.thymeleafdemo.dao;
+import com.denizci155.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {

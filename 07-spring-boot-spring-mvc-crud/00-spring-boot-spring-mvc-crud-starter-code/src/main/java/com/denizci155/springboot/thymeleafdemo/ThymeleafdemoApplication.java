@@ -1,13 +1,13 @@
-package com.denizci155.springboot.cruddemo;
+package com.denizci155.springboot.thymeleafdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CruddemoApplication {
+public class ThymeleafdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CruddemoApplication.class, args);
+		SpringApplication.run(ThymeleafdemoApplication.class, args);
 	}
 
 }

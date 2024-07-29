@@ -1,7 +1,7 @@
-package com.denizci155.springboot.cruddemo.rest;
+package com.denizci155.springboot.thymeleafdemo.rest;
 
-import com.denizci155.springboot.cruddemo.entity.Employee;
-import com.denizci155.springboot.cruddemo.service.EmployeeService;
+import com.denizci155.springboot.thymeleafdemo.entity.Employee;
+import com.denizci155.springboot.thymeleafdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -41,14 +41,22 @@ public class DemoSecurityConfig {
 
             http.authorizeHttpRequests(configurer ->
                     configurer
+                            .requestMatchers("/css/**","/js/**","/vendor/**","/images/**","/fonts/**")
+                            .permitAll()
                             .anyRequest().authenticated())
 
                     .formLogin(form ->
                         form
                                 .loginPage("/showMyLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
+                                .defaultSuccessUrl("/", true)
                                 .permitAll()
-                    );
+                    )
+                    .logout(logout -> logout
+                            .logoutUrl("/logout")
+                            .logoutSuccessUrl("/showMyLoginPage?logout")
+                            .permitAll());
+
             return http.build();
     }
 

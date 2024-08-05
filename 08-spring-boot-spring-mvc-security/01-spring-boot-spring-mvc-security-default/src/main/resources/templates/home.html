@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>X Company Home Page</title>
@@ -9,6 +9,21 @@
         <hr>
         <p>Welcome to the X company home page!</p>
         <br>
+        <p>
+
+            User: <span sec:authentication="principal.username"></span>
+            <br>
+            Role(s): <span sec:authentication="principal.authorities"></span>
+
+        </p>
+        <br>
+
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+            (Only for Managers)
+        </p>
+
+
         <form action="#" th:action="@{/logout}" method="POST">
             <input type="submit" value="logout">
         </form>

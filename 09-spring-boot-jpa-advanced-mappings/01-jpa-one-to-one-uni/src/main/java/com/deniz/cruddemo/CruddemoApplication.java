@@ -21,18 +21,38 @@ public class CruddemoApplication {
 
 		return runner -> {
 
-			createInstructor(appDAO);
-
+			// createInstructor(appDAO);
+			findInstructorById(appDAO);
 		};
+	}
+
+	private void findInstructorById(AppDAO appDAO) {
+
+		int theId = 2;
+
+		System.out.println("Finding Instructor id: " + theId);
+
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+		System.out.println("tempInstructor: " + tempInstructor);
+		System.out.println("the associated InstructorDetail only: " + tempInstructor.getInstructorDetail());
+
 	}
 
 	private void createInstructor(AppDAO appDAO) {
 
-		Instructor tempInstructor = new
+		/* Instructor tempInstructor = new
 				Instructor("Chad","Darby","darby@luv2code.com");
 
 		InstructorDetail tempInstructorDetail = new
 				InstructorDetail("http://www.luv2code.com/youtube","Luv2Code!!!");
+		*/
+		Instructor tempInstructor = new
+				Instructor("Deniz","Inec","denizinec9 @gmail.com");
+
+		InstructorDetail tempInstructorDetail = new
+				InstructorDetail("-","Guitar!");
+
 
 
 		tempInstructor.setInstructorDetail(tempInstructorDetail);

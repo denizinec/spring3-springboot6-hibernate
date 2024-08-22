@@ -214,6 +214,6 @@ public class AppDAOImpl implements AppDAO{
 
         entityManager.remove(tempStudent);
 
-  
+
     }
 }

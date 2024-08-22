@@ -3,6 +3,7 @@ package com.deniz.cruddemo.dao;
 import com.deniz.cruddemo.entity.Course;
 import com.deniz.cruddemo.entity.Instructor;
 import com.deniz.cruddemo.entity.InstructorDetail;
+import com.deniz.cruddemo.entity.Student;
 
 import java.util.List;
 
@@ -33,5 +34,12 @@ public interface AppDAO {
     void save(Course theCourse);
 
     Course findCourseAndReviewsByCourseId(int theId);
+
+    Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    void update(Student tempStudent);
+
 
 }

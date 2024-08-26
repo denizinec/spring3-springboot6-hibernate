@@ -2,18 +2,33 @@ package com.deniz.aopdemo.aspect;
 
 import com.deniz.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Aspect
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+
+    @AfterReturning(
+            pointcut = "(* com.deniz.aopdemo.dao.AccountDAO.findAccounts(..))",
+            returning = "result"
+    )
+    public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result){
+            String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====> Executing @AfterReturning on method: " + method);
+
+        //  print out results of method call
+
+        System.out.println("\n=====> Result is: " + result);
+
+
+
+    }
 
 
     @Before("com.deniz.aopdemo.aspect.AopExpressions.forDaoPackageNoGetterSetter()")

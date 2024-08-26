@@ -31,8 +31,21 @@ public class AopdemoApplication {
 
 		// call the business method
 		Account myAccount = new Account();
+		myAccount.setName("deno");
+		myAccount.setLevel("199");
+
 		accountDAO.addAccount(myAccount,true);
 		accountDAO.doWork();
+
+
+		// call the AccountDAO getter/setter methods
+
+		accountDAO.setName("deno");
+		accountDAO.setServiceCode("123");
+
+		String name = accountDAO.getName();
+		String code = accountDAO.getServiceCode();
+
 
 		// call the membership one
 

@@ -14,19 +14,68 @@ import java.util.List;
 @Order(2)
 public class MyDemoLoggingAspect {
 
+    @AfterThrowing(
+            pointcut = "execution(* com.deniz.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing = "theExc")
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable theExc){
+
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====> Executing @AfterThrowing on method: " + method);
+
+        // log the exception
+
+        System.out.println("\n=====> The exception is: " + theExc);
+
+    }
+
+
     @AfterReturning(
-            pointcut = "(* com.deniz.aopdemo.dao.AccountDAO.findAccounts(..))",
+            pointcut = "execution(* com.deniz.aopdemo.dao.AccountDAO.findAccounts(..))",
             returning = "result"
     )
     public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result){
-            String method = joinPoint.getSignature().toShortString();
+
+        String method = joinPoint.getSignature().toShortString();
         System.out.println("\n=====> Executing @AfterReturning on method: " + method);
 
         //  print out results of method call
 
         System.out.println("\n=====> Result is: " + result);
 
+        // post-process data
 
+        // converting the account names to uppercase
+        oonvertAccountNamesUppercase(result);
+
+        convertLevelsUppercase(result);
+
+        System.out.println("\n=====> Modified result (uppercase name/level) is: " + result);
+
+
+    }
+
+    private void convertLevelsUppercase(List<Account> result) {
+
+        for (Account tempAccount : result){
+            String theUpperLevel = tempAccount.getLevel().toUpperCase();
+            tempAccount.setLevel(theUpperLevel);
+        }
+
+    }
+
+    private void oonvertAccountNamesUppercase(List<Account> result) {
+
+        // loop through accounts
+
+        for(Account tempAccount : result){
+
+            // get uppercase version of name
+            String theUpperName = tempAccount.getName().toUpperCase();
+
+            // update the name on the account
+            tempAccount.setName(theUpperName);
+
+        }
 
     }
 

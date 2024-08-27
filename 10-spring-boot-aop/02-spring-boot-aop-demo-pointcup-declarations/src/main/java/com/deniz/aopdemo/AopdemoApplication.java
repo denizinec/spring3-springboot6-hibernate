@@ -2,6 +2,7 @@ package com.deniz.aopdemo;
 
 import com.deniz.aopdemo.dao.AccountDAO;
 import com.deniz.aopdemo.dao.MembershipDAO;
+import com.deniz.aopdemo.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,15 +20,50 @@ public class AopdemoApplication {
 
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,
+											   MembershipDAO membershipDAO,
+											   TrafficFortuneService trafficFortuneService){
 
 		return runner -> {
 
 			// demoTheBeforeAdvice(accountDAO, membershipDAO);
 			// demoTheAfterReturningAdvice(accountDAO);
 			// demoTheAfterThrowingAdvice(accountDAO);
-			demoTheAfterAdvice(accountDAO);
+			// demoTheAfterAdvice(accountDAO);
+			// demoTheAroundAdvice(trafficFortuneService);
+			demoTheAroundAdviceHandleException(trafficFortuneService);
 		};
+
+	}
+
+	private void demoTheAroundAdviceHandleException(TrafficFortuneService trafficFortuneService) {
+
+		System.out.println("\nMain Program: demoTheAroundAdviceHandleException");
+
+
+		System.out.println("Calling getFortune()");
+
+		boolean tripWire = true;
+		String data = trafficFortuneService.getFortune(tripWire);
+
+		System.out.println("\n My Fortune is: " + data);
+
+		System.out.println("Finished.");
+
+	}
+
+	private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
+
+		System.out.println("\nMain Program: demoTheAroundAdvice");
+
+
+		System.out.println("Calling getFortune()");
+
+		String data = trafficFortuneService.getFortune();
+
+		System.out.println("\nMy Fortune is: " + data);
+
+		System.out.println("Finished.");
 
 	}
 
